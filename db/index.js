@@ -5,7 +5,7 @@ const pool = new Pool({
   password: '000',
   host: 'localhost',
   port: 5432,
-  database: '',
+  database: 'node_postgres.training',
 });
 
 export default pool;

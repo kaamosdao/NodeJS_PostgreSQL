@@ -1,5 +1,5 @@
 # NodeJS + PostgreSQL
-Backend Node JS &amp; PostgreSQL training.
+Backend Node.JS &amp; PostgreSQL training
 
 ## Requirements:
 

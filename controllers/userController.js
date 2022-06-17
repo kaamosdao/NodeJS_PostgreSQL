@@ -1,4 +1,5 @@
 import db from '../db/index.js';
+import postController from './postController.js';
 
 class UserController {
   async createUser(req, res) {
@@ -9,7 +10,7 @@ class UserController {
     res.json(newPerson.rows[0]);
   }
 
-  async getUsers(req, res) {
+  async getUsers(_req, res) {
     const users = await db.query('SELECT * FROM person');
     res.json(users.rows);
   }
@@ -31,8 +32,13 @@ class UserController {
 
   async deleteUser(req, res) {
     const { id } = req.params;
-    const text = 'DELETE FROM person WHERE id = $1 RETURNING *';
-    const person = await db.query(text, [id]);
+
+    const postText = 'DELETE FROM post WHERE user_id = $1 RETURNING *';
+    await db.query(postText, [id]);
+
+    const personText = 'DELETE FROM person WHERE id = $1 RETURNING *';
+    const person = await db.query(personText, [id]);
+
     res.json(person.rows[0]);
   }
 }

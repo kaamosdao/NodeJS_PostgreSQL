@@ -1,11 +1,11 @@
-import { Pool } from 'pg';
+import pg from 'pg';
 
-const pool = new Pool({
+const { Pool } = pg;
+
+export default new Pool({
   user: 'postgres',
-  password: '000',
+  password: 'postgres',
   host: 'localhost',
   port: 5432,
-  database: 'node_postgres.training',
+  database: 'node_postgres_training',
 });
-
-export default pool;
